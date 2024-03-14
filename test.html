@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking Site</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        .content {
+            flex: 2;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .links li {
+            margin-bottom: 10px;
+        }
+
+        .links li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .links li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Categories</h2>
+            <ul class="links">
+                {% for group in groups %}
+                    <li><a href="{% url 'voting:group_targets' group.name %}">{{ group.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Welcome to Ranking Site</h1>
+            <p>This is a platform where you can vote and rank various items in different categories.</p>
+            <p>Explore the categories on the left and start voting!</p>
+        </div>
+        <div class="sidebar"></div> <!-- 空白のサイドバー -->
+    </div>
+</body>
+</html>
